@@ -11,4 +11,5 @@ ctrl+shift+p commands
 * Spotify: Stop
 
 idea: Marcelo Fonseca Tambalo
-Technical support: Peter Valentine
+
+Technical support: Pedro Valentim
