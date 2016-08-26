@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "Spotify: Play",
+    "command": "playpause"
+  },
+  {
+    "caption": "Spotify: Pause",
+    "command": "playpause"
+  },
+  {
+    "caption": "Spotify: Next",
+    "command": "next"
+  },
+  {
+    "caption": "Spotify: Previous",
+    "command": "previous"
+  },
+  {
+    "caption": "Spotify: Stop",
+    "command": "stop"
+  }
+]
