@@ -1,0 +1,16 @@
+{
+    "schema_version": "0.1",
+    "packages": [
+        {
+            "name": "SpotifyPlayer",
+            "details": "https://github.com/zokis/SpotifySublime/",
+            "releases": [
+                {
+                    "sublime_text": ">2999",
+                    "platforms": [],
+                    "details": "https://github.com/zokis/SpotifySublime/tags"
+                }
+            ]
+        }
+    ]
+}
