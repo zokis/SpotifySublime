@@ -1,13 +1,18 @@
 import sublime_plugin
 import subprocess
+import os
 import threading
 
 
 class Runner(threading.Thread):
-    def __init__(self, command):
+
+    BASE = 'dbus-send --print-reply=literal --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.%s'
+
+    def __init__(self, command, env):
         self.stdout = None
         self.stderr = None
         self.command = command or ''
+        self.env = env or ''
         threading.Thread.__init__(self)
 
     def run(self):
@@ -31,7 +36,7 @@ class Base(sublime_plugin.WindowCommand):
     command = 'PlayPause'
 
     def run(self):
-        runner = Runner(self.command)
+        runner = Runner(self.command, os.environ.copy())
         runner.start()
 
 
