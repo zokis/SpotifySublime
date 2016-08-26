@@ -6,8 +6,6 @@ import threading
 
 class Runner(threading.Thread):
 
-    BASE = 'dbus-send --print-reply=literal --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.%s'
-
     def __init__(self, command, env):
         self.stdout = None
         self.stderr = None
