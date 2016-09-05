@@ -28,19 +28,15 @@
     "command": "closespotify"
   },
   {
-    "caption": "Volume: Up 5%",
-    "command": "volumeup5"
+    "caption": "Volume: Up",
+    "command": "volumeup"
   },
   {
-    "caption": "Volume: Up 10%",
-    "command": "volumeup10"
+    "caption": "Volume: Down",
+    "command": "volumedown"
   },
   {
-    "caption": "Volume: Down 5%",
-    "command": "volumedown5"
-  },
-  {
-    "caption": "Volume: Down 10%",
-    "command": "volumedown10"
+    "caption": "Volume: Set",
+    "command": "volumeset"
   }
 ]
