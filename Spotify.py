@@ -5,50 +5,89 @@ import threading
 
 
 class Runner(threading.Thread):
+    '''https://gist.github.com/duncan-bayne/3f7ef98a15b02b693bf47a03fda79b3a
+    '''
 
-    def __init__(self, command, env):
-        self.stdout = None
-        self.stderr = None
-        self.command = command or ''
-        self.env = env or ''
+    def __init__(self, command):
+        self.command = command
         threading.Thread.__init__(self)
 
     def run(self):
         subprocess.Popen(
-            [
-                'dbus-send',
-                '--print-reply=literal',
-                '--dest=org.mpris.MediaPlayer2.spotify',
-                '/org/mpris/MediaPlayer2',
-                'org.mpris.MediaPlayer2.Player.%s' % self.command
-            ],
+            self.command,
+            env=os.environ.copy(),
             shell=False,
-            stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
+            stdout=subprocess.PIPE,
             universal_newlines=True,
-            env=self.env
         )
 
 
 class Base(sublime_plugin.WindowCommand):
     command = 'PlayPause'
+    base_command = [
+        'dbus-send',
+        '--print-reply=literal',
+        '--dest=org.mpris.MediaPlayer2.spotify',
+        '/org/mpris/MediaPlayer2',
+        'org.mpris.MediaPlayer2.Player.%s'
+    ]
+
+    def get_command(self):
+        command = self.base_command[:]
+        command[-1] = command[-1] % self.command
+        return command
 
     def run(self):
-        runner = Runner(self.command, os.environ.copy())
+        runner = Runner(self.get_command())
         runner.start()
 
 
-class PlaypauseCommand(Base):
-    command = 'PlayPause'
+class PlaypausespotifyCommand(Base):
+    pass
 
 
-class NextCommand(Base):
+class NextspotifyCommand(Base):
     command = 'Next'
 
 
-class PreviousCommand(Base):
+class PreviousspotifyCommand(Base):
     command = 'Previous'
 
 
-class StopCommand(Base):
+class StopspotifyCommand(Base):
     command = 'Stop'
+
+
+class OpenspotifyCommand(Base):
+    command = 'spotify'
+    base_command = ['%s']
+
+
+class ClosespotifyCommand(Base):
+    base_command = ['kill', '-9', '%s']
+
+    def get_command(self):
+        command = self.base_command[:]
+        command[-1] = command[-1] % subprocess.check_output(["pidof", "-s", 'spotify'])
+        return command
+
+
+class VolumeCommand(Base):
+    base_command = ['amixer', '-D', 'pulse', 'sset', 'Master', '%s']
+
+
+class Volumeup5Command(VolumeCommand):
+    command = '5%+'
+
+
+class Volumeup10Command(VolumeCommand):
+    command = '10%+'
+
+
+class Volumedown5Command(VolumeCommand):
+    command = '5%-'
+
+
+class Volumedown10Command(VolumeCommand):
+    command = '10%-'
