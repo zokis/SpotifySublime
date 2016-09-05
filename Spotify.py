@@ -75,19 +75,27 @@ class ClosespotifyCommand(Base):
 
 class VolumeCommand(Base):
     base_command = ['amixer', '-D', 'pulse', 'sset', 'Master', '%s']
+    input_text = ''
+
+    def set_volume(self, text):
+        self.command = "%s%%%s" % (text, self.signal)
+        runner = Runner(self.get_command())
+        runner.start()
+
+    def run(self):
+        self.window.show_input_panel(self.input_text, '', self.set_volume, None, None)
 
 
-class Volumeup5Command(VolumeCommand):
-    command = '5%+'
+class VolumeupCommand(VolumeCommand):
+    signal = '+'
+    input_text = 'Aumentar Volume (%):'
 
 
-class Volumeup10Command(VolumeCommand):
-    command = '10%+'
+class VolumedownCommand(VolumeCommand):
+    signal = '-'
+    input_text = 'Diminuir Volume (%):'
 
 
-class Volumedown5Command(VolumeCommand):
-    command = '5%-'
-
-
-class Volumedown10Command(VolumeCommand):
-    command = '10%-'
+class VolumesetCommand(VolumeCommand):
+    signal = ''
+    input_text = 'Volume (%):'
