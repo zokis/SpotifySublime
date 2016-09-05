@@ -1,22 +1,46 @@
 [
   {
     "caption": "Spotify: Play",
-    "command": "playpause"
+    "command": "playpausespotify"
   },
   {
     "caption": "Spotify: Pause",
-    "command": "playpause"
+    "command": "playpausespotify"
   },
   {
     "caption": "Spotify: Next",
-    "command": "next"
+    "command": "nextspotify"
   },
   {
     "caption": "Spotify: Previous",
-    "command": "previous"
+    "command": "previousspotify"
   },
   {
     "caption": "Spotify: Stop",
-    "command": "stop"
+    "command": "stopspotify"
+  },
+  {
+    "caption": "Spotify: Open",
+    "command": "openspotify"
+  },
+  {
+    "caption": "Spotify: Close",
+    "command": "closespotify"
+  },
+  {
+    "caption": "Volume: Up 5%",
+    "command": "volumeup5"
+  },
+  {
+    "caption": "Volume: Up 10%",
+    "command": "volumeup10"
+  },
+  {
+    "caption": "Volume: Down 5%",
+    "command": "volumedown5"
+  },
+  {
+    "caption": "Volume: Down 10%",
+    "command": "volumedown10"
   }
 ]
