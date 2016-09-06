@@ -9,6 +9,9 @@ ctrl+shift+p commands
 * Spotify: Next
 * Spotify: Previous
 * Spotify: Stop
+* Volume: Up
+* Volume: Down
+* Volume: Set
 
 idea: Marcelo Fonseca Tambalo
 
