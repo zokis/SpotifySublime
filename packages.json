@@ -7,8 +7,8 @@
             "releases": [
                 {
                     "sublime_text": ">2999",
-                    "platforms": [],
-                    "details": "https://github.com/zokis/SpotifySublime/tags"
+                    "platforms": ["linux"],
+                    "details": "https://github.com/zokis/SpotifySublime"
                 }
             ]
         }
