@@ -2,7 +2,7 @@
     "schema_version": "0.1",
     "packages": [
         {
-            "name": "SpotifyPlayer",
+            "name": "SpotifyPlayer (ubuntu)",
             "details": "https://github.com/zokis/SpotifySublime/",
             "releases": [
                 {
